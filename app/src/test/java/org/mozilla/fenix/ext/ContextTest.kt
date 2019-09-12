@@ -1,4 +1,4 @@
-package org.mozilla.fenix.ext
+/*package org.mozilla.fenix.ext
 
 import android.app.Activity
 import android.content.ActivityNotFoundException
@@ -46,7 +46,7 @@ import io.mockk.mockkClass
 
 
 //TO-DO Not Working
-/*class ContextTest() {
+class ContextTest() {
    // var mockContext: Context = spyk()
     val mockCTW: ContextThemeWrapper = mockk(relaxed=true)
     val mockActivity: Activity = mockk(relaxed=true)
