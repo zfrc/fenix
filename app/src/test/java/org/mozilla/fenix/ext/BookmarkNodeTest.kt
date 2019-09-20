@@ -32,8 +32,9 @@ import io.mockk.just
 @Config(application = TestApplication::class)
 
 class BookmarkNodeTest {
-    val mockBookmarkNode: BookmarkNode = mockk(relaxed = true)
-    val title = testContext.getString(R.string.library_bookmarks)
+    var mockBookmarkNode: BookmarkNode = mockk(relaxed = true)
+    val title = "hello"
+    //testContext.getString(R.string.library_bookmarks)
     //val mockContext: Context = mockk()
 
     @Test
@@ -72,7 +73,9 @@ class BookmarkNodeTest {
         rootTitles = mapOf("root" to testContext.getString(R.string.library_bookmarks),
                 "menu" to testContext.getString(R.string.library_desktop_bookmarks_menu),
                 "toolbar" to testContext.getString(R.string.library_desktop_bookmarks_toolbar))
-        assertEquals(mockBookmarkNode.copy(title = rootTitles[title]), mockBookmarkNode.withRootTitle())
+        verify { mockBookmarkNode.withRootTitle() }
+        verify { mockBookmarkNode.copy(title = rootTitles[title]) }
+        //assertEquals(mockBookmarkNode.copy(title = rootTitles[title]), mockBookmarkNode.withRootTitle())
     }
 
 }
