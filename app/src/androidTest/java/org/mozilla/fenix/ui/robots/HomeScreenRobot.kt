@@ -270,7 +270,7 @@ private fun assertProtectYourselfText() {
 
 private fun assertBrowsePrivatelyHeader() {
     val appView = UiScrollable(UiSelector().scrollable(true))
-    appView.scrollTextIntoView("Browse privately")
+    appView.scrollTextIntoView("Your privacy")
     mDevice.wait(Until.findObjects(By.text("Browse privately")), TestAssetHelper.waitingTime)
     onView(CoreMatchers.allOf(ViewMatchers.withText("Browse privately")))
         .check(matches(withEffectiveVisibility(Visibility.VISIBLE)))
