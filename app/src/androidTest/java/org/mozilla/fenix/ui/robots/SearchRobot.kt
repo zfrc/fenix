@@ -6,6 +6,7 @@
 
 package org.mozilla.fenix.ui.robots
 
+import android.app.Instrumentation
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.ViewInteraction
@@ -74,6 +75,9 @@ class SearchRobot {
     }
 
     fun scrollToSearchEngineSettings(): UiScrollable {
+
+        mDevice.findObject(UiSelector().scrollable(true))
+
         val appView = UiScrollable(UiSelector().scrollable(true))
         appView.scrollTextIntoView("Search engine settings")
         return appView

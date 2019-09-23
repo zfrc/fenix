@@ -15,13 +15,12 @@ import androidx.test.espresso.matcher.ViewMatchers.Visibility
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility
 import androidx.test.platform.app.InstrumentationRegistry
-import androidx.test.uiautomator.UiDevice
-import androidx.test.uiautomator.UiScrollable
-import androidx.test.uiautomator.UiSelector
+import androidx.test.uiautomator.*
 import org.hamcrest.CoreMatchers
 import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.containsString
 import org.mozilla.fenix.R
+import org.mozilla.fenix.helpers.TestAssetHelper
 
 /**
  * Implementation of Robot Pattern for the home screen menu.
@@ -265,9 +264,11 @@ private fun assertProtectYourselfText() {
         .check(matches(withEffectiveVisibility(Visibility.VISIBLE)))
 }
 
-private fun assertBrowsePrivatelyHeader() =
+private fun assertBrowsePrivatelyHeader() {
+    mDevice.wait(Until.findObjects(By.text("Browse privately")), TestAssetHelper.waitingTime)
     onView(CoreMatchers.allOf(ViewMatchers.withText("Browse privately")))
         .check(matches(withEffectiveVisibility(Visibility.VISIBLE)))
+}
 
 private fun assertBrowsePrivatelyText() =
     onView(CoreMatchers.allOf(ViewMatchers.withText(containsString("private browsing is just a tap away."))))
