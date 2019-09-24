@@ -83,7 +83,7 @@ class HomeScreenTest {
             verifyTrackingProtectionToggle()
             verifyProtectYourselfText()
 
-            verifyBrowsePrivatelyHeader()
+//            verifyBrowsePrivatelyHeader()
             verifyBrowsePrivatelyText()
             verifyYourPrivacyHeader()
             verifyYourPrivacyText()
