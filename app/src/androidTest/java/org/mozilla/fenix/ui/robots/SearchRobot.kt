@@ -78,6 +78,8 @@ class SearchRobot {
         mDevice.findObject(UiSelector().scrollable(true))
 
         val appView = UiScrollable(UiSelector().scrollable(true))
+//        appView.scrollIntoView("mozac_browser_awesomebar_title")
+        appView.scrollToEnd(3)
         appView.scrollTextIntoView("Search engine settings")
         return appView
     }
