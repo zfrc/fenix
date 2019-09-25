@@ -79,7 +79,10 @@ class SearchRobot {
 
         val appView = UiScrollable(UiSelector().scrollable(true))
 //        appView.scrollIntoView("mozac_browser_awesomebar_title")
-        appView.scrollToEnd(3)
+        // use non DOM locator finder
+        // try X,y coords or max swipes
+        // mDevice.xxxx - may have more
+        appView.scrollToEnd(6)
         appView.scrollTextIntoView("Search engine settings")
         return appView
     }

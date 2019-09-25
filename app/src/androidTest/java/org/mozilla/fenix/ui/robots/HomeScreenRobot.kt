@@ -11,9 +11,7 @@ import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.doesNotExist
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers
-import androidx.test.espresso.matcher.ViewMatchers.Visibility
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility
+import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.By
 import androidx.test.uiautomator.UiDevice
@@ -25,6 +23,10 @@ import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.containsString
 import org.mozilla.fenix.R
 import org.mozilla.fenix.helpers.TestAssetHelper
+import android.R
+import androidx.test.espresso.contrib.RecyclerViewActions
+import androidx.test.rule.ActivityTestRule
+
 
 /**
  * Implementation of Robot Pattern for the home screen menu.
@@ -268,13 +270,18 @@ private fun assertProtectYourselfText() {
         .check(matches(withEffectiveVisibility(Visibility.VISIBLE)))
 }
 
-private fun assertBrowsePrivatelyHeader() {
+private fun assertBrowsePrivatelyHeaderOLD() {
     val appView = UiScrollable(UiSelector().scrollable(true))
 //    appView.scrollTextIntoView("Your privacy")
     appView.scrollTextIntoView("Start browsing")
     mDevice.wait(Until.findObjects(By.text("Browse privately")), TestAssetHelper.waitingTime)
     onView(CoreMatchers.allOf(ViewMatchers.withText("Browse privately")))
         .check(matches(withEffectiveVisibility(Visibility.VISIBLE)))
+}
+
+private fun assertBrowsePrivatelyHeader() {
+    onView(ViewMatchers.withId(org.mozilla.fenix.R.id.home_component))
+        .check(matches(hasDescendant(withText("Browse privately"))))
 }
 
 private fun assertBrowsePrivatelyText() =
