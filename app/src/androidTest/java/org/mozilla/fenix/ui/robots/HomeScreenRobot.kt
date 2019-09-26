@@ -23,7 +23,6 @@ import org.hamcrest.Matchers.allOf
 import org.hamcrest.Matchers.containsString
 import org.mozilla.fenix.R
 import org.mozilla.fenix.helpers.TestAssetHelper
-import android.R
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.rule.ActivityTestRule
 
@@ -280,7 +279,7 @@ private fun assertBrowsePrivatelyHeaderOLD() {
 }
 
 private fun assertBrowsePrivatelyHeader() {
-    onView(ViewMatchers.withId(org.mozilla.fenix.R.id.home_component))
+    onView(ViewMatchers.withId(R.id.home_component))
         .check(matches(hasDescendant(withText("Browse privately"))))
 }
 
