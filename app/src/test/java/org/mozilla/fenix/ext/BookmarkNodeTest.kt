@@ -73,6 +73,8 @@ class BookmarkNodeTest {
         rootTitles = mapOf("root" to testContext.getString(R.string.library_bookmarks),
                 "menu" to testContext.getString(R.string.library_desktop_bookmarks_menu),
                 "toolbar" to testContext.getString(R.string.library_desktop_bookmarks_toolbar))
+        //every { mockBookmarkNode.getTitle() } returns "hello"
+        mockBookmarkNode.withRootTitle()
         verify { mockBookmarkNode.withRootTitle() }
         verify { mockBookmarkNode.copy(title = rootTitles[title]) }
         //assertEquals(mockBookmarkNode.copy(title = rootTitles[title]), mockBookmarkNode.withRootTitle())
