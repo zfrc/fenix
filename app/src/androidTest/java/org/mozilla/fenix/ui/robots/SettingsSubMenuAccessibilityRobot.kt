@@ -6,7 +6,7 @@
 
 package org.mozilla.fenix.ui.robots
 
-import androidx.test.espresso.Espresso
+import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.assertion.ViewAssertions
 import androidx.test.espresso.matcher.ViewMatchers
@@ -35,12 +35,12 @@ class SettingsSubMenuAccessibilityRobot {
 }
 
 private fun assertAutomaticFontSizing() {
-    Espresso.onView(ViewMatchers.withText("Automatic Font Sizing"))
+    onView(ViewMatchers.withText("Automatic Font Sizing"))
         .check(ViewAssertions.matches(ViewMatchers.withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)))
     val strFont = "Font size will match your Android settings. Disable to manage font size here."
-    Espresso.onView(ViewMatchers.withText(strFont))
+    onView(ViewMatchers.withText(strFont))
         .check(ViewAssertions.matches(ViewMatchers.withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)))
 }
 
 private fun goBackButton() =
-    Espresso.onView(CoreMatchers.allOf(ViewMatchers.withContentDescription("Navigate up")))
+    onView(CoreMatchers.allOf(ViewMatchers.withContentDescription("Navigate up")))

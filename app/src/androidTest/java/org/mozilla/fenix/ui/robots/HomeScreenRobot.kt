@@ -36,50 +36,85 @@ import org.mozilla.fenix.helpers.click
  * Implementation of Robot Pattern for the home screen menu.
  */
 class HomeScreenRobot {
+
     fun verifyNavigationToolbar() = assertNavigationToolbar()
+
     fun verifyHomeScreen() = assertHomeScreen()
+
     fun verifyHomePrivateBrowsingButton() = assertHomePrivateBrowsingButton()
+
     fun verifyHomeMenu() = assertHomeMenu()
+
     fun verifyOpenTabsHeader() = assertOpenTabsHeader()
+
     fun verifyAddTabButton() = assertAddTabButton()
+
     fun verifyNoTabsOpenedText() = assertNoTabsOpenedText()
+
     fun verifyCollectionsHeader() = assertCollectionsHeader()
+
     fun verifyNoCollectionsHeader() = assertNoCollectionsHeader()
+
     fun verifyNoCollectionsText() = assertNoCollectionsText()
+
     fun verifyNoTabsOpenedHeader() = assertNoTabsOpenedHeader()
+
     fun verifyHomeWordmark() = assertHomeWordmark()
+
     fun verifyHomeToolbar() = assertHomeToolbar()
+
     fun verifyHomeComponent() = assertHomeComponent()
 
     // First Run elements
     fun verifyWelcomeHeader() = assertWelcomeHeader()
 
     fun verifyGetTheMostHeader() = assertGetTheMostHeader()
+
     fun verifyAccountsSignInButton() = assertAccountsSignInButton()
+
     fun verifyGetToKnowHeader() = assertGetToKnowHeader()
+
     fun verifyChooseThemeHeader() = assertChooseThemeHeader()
+
     fun verifyChooseThemeText() = assertChooseThemeText()
+
     fun verifyLightThemeToggle() = assertLightThemeToggle()
+
     fun verifyLightThemeDescription() = assertLightThemeDescription()
+
     fun verifyDarkThemeToggle() = assertDarkThemeToggle()
+
     fun verifyDarkThemeDescription() = assertDarkThemeDescription()
+
     fun verifyAutomaticThemeToggle() = assertAutomaticThemeToggle()
+
     fun verifyAutomaticThemeDescription() = assertAutomaticThemeDescription()
+
     fun verifyProtectYourselfHeader() = assertProtectYourselfHeader()
+
     fun verifyTrackingProtectionToggle() = assertTrackingProtectionToggle()
+
     fun verifyProtectYourselfText() = assertProtectYourselfText()
 
     fun verifyBrowsePrivatelyHeader() = assertBrowsePrivatelyHeader()
+
     fun verifyBrowsePrivatelyText() = assertBrowsePrivatelyText()
+
     fun verifyYourPrivacyHeader() = assertYourPrivacyHeader()
+
     fun verifyYourPrivacyText() = assertYourPrivacyText()
+
     fun verifyPrivacyNoticeButton() = assertPrivacyNoticeButton()
+
     fun verifyStartBrowsingButton() = assertStartBrowsingButton()
 
     // Private mode elements
     fun verifyPrivateSessionHeader() = assertPrivateSessionHeader()
+
     fun verifyPrivateSessionMessage(visible: Boolean = true) = assertPrivateSessionMessage(visible)
+
     fun verifyShareTabsButton(visible: Boolean = true) = assertShareTabsButton(visible)
+
     fun verifyCloseTabsButton(visible: Boolean = true) = assertCloseTabsButton(visible)
 
     fun verifyExistingTabList() = assertExistingTabList()
@@ -89,29 +124,35 @@ class HomeScreenRobot {
         collectionThreeDotButton().click()
         mDevice.wait(Until.findObject(By.text("Delete collection")), waitingTime)
     }
+
     fun selectRenameCollection() {
         onView(allOf(ViewMatchers.withText("Rename collection"))).click()
         mDevice.wait(Until.findObject(By.res("org.mozilla.fenix.debug:id/name_collection_edittext")), waitingTime)
     }
+
     fun selectDeleteCollection() {
         onView(allOf(ViewMatchers.withText("Delete collection"))).click()
         mDevice.wait(Until.findObject(By.res("message")), waitingTime)
     }
+
     fun confirmDeleteCollection() {
         onView(allOf(ViewMatchers.withText("DELETE"))).click()
         mDevice.wait(Until.findObject(By.res("org.mozilla.fenix.debug:id/collections_header")), waitingTime)
     }
+
     fun typeCollectionName(name: String) {
         mDevice.wait(Until.findObject(By.res("org.mozilla.fenix.debug:id/name_collection_edittext")), waitingTime)
         collectionNameTextField().check(matches(hasFocus()))
         collectionNameTextField().perform(ViewActions.replaceText(name))
         collectionNameTextField().perform(ViewActions.pressImeActionButton())
     }
+
     fun scrollToElementByText(text: String): UiScrollable {
         val appView = UiScrollable(UiSelector().scrollable(true))
         appView.scrollTextIntoView(text)
         return appView
     }
+
     fun swipeUpToDismissFirstRun() {
         scrollToElementByText("Start browsing")
     }

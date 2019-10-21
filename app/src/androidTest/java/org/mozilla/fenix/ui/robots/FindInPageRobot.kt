@@ -30,7 +30,9 @@ class FindInPageRobot {
     val mDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())!!
 
     fun verifyFindInPageNextButton() = assertFindInPageNextButton()!!
+
     fun verifyFindInPagePrevButton() = assertFindInPagePrevButton()!!
+
     fun verifyFindInPageCloseButton() = assertFindInPageCloseButton()!!
 
     fun enterFindInPageQuery(expectedText: String) {
@@ -68,9 +70,13 @@ class FindInPageRobot {
 }
 
 private fun findInPageQuery() = onView(withId(R.id.find_in_page_query_text))
+
 private fun findInPageResult() = onView(withId(R.id.find_in_page_result_text))
+
 private fun findInPageNextButton() = onView(withId(R.id.find_in_page_next_btn))
+
 private fun findInPagePrevButton() = onView(withId(R.id.find_in_page_prev_btn))
+
 private fun findInPageCloseButton() = onView(withId(R.id.find_in_page_close_btn))
 
 private fun assertFindInPageNextButton() = findInPageNextButton()

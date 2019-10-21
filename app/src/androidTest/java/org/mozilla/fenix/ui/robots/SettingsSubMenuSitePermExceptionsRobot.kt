@@ -8,7 +8,9 @@ package org.mozilla.fenix.ui.robots
 
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions
+import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.uiautomator.UiDevice
 import org.hamcrest.CoreMatchers
@@ -16,19 +18,25 @@ import org.hamcrest.CoreMatchers
 /**
  * Implementation of Robot Pattern for the settings search sub menu.
  */
-class SettingsSubMenuAboutRobot {
+class SettingsSubMenuSitePermExceptionsRobot {
+    fun verifyNoSiteExceptions() = assertNoSiteExceptions()
 
     class Transition {
         val mDevice = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
 
-        fun goBack(interact: SettingsRobot.() -> Unit): SettingsRobot.Transition {
+        fun goBack(interact: SettingsSubMenuSitePermissionsRobot.() -> Unit): SettingsSubMenuSitePermissionsRobot.Transition {
             mDevice.waitForIdle()
             goBackButton().perform(ViewActions.click())
 
-            SettingsRobot().interact()
-            return SettingsRobot.Transition()
+            SettingsSubMenuSitePermissionsRobot().interact()
+            return SettingsSubMenuSitePermissionsRobot.Transition()
         }
     }
+}
+
+private fun assertNoSiteExceptions() {
+    onView(ViewMatchers.withText("No site exceptions"))
+        .check(matches(withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)))
 }
 
 private fun goBackButton() =
