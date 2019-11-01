@@ -62,7 +62,11 @@ fun navigationToolbar(interact: NavigationToolbarRobot.() -> Unit): NavigationTo
 }
 
 private fun dismissOnboardingButton() = onView(ViewMatchers.withId(R.id.close_onboarding))
+
 private fun urlBar() = onView(ViewMatchers.withId(R.id.toolbar))
+
 private fun awesomeBar() = onView(ViewMatchers.withId(R.id.mozac_browser_toolbar_edit_url_view))
+
 private fun threeDotButton() = onView(ViewMatchers.withContentDescription("Menu"))
+
 private fun newTab() = onView(ViewMatchers.withContentDescription("Add tab"))

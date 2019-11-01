@@ -17,7 +17,7 @@ import org.mozilla.fenix.helpers.HomeActivityTestRule
 import org.mozilla.fenix.ui.robots.homeScreen
 
 /**
- *  Tests for verifying the main three dot menu options
+ *  Tests for verifying the Settings menu - Privacy sub menu
  *
  */
 
@@ -46,59 +46,77 @@ class SettingsPrivacyTest {
     @Test
     // Walks through settings privacy menu and sub-menus to ensure all items are present
     fun settingsPrivacyItemsTest() {
-        // Open 3dot (main) menu
-        // Select settings
-        // Verify header: "Privacy"
-
-        // Verify item: "Tracking Protection" and default value: "On"
-        // Verify item: "Tracking Protection" and default value: "On"
-
-        // Verify item: "Site Permissions"
-        // Click on: "Site permissions"
-        // Verify sub-menu items...
-        // Verify item: Exceptions
-        // Verify item: header: "Permissions"
-        // Verify item: "Camera" and default value: "ask to allow"
-        // Verify item: "Location" and default value: "ask to allow"
-        // Verify item: "Microphone" and default value: "ask to allow"
-        // Verify item: "Notification" and default value: "ask to allow"
-
-        // Verify item: "Delete browsing data"
-        // Click on: "Delete browsing data"
-        // Verify sub-menu items...
-        // Verify item: "Open tabs"
-        // Verify item" <tab count> tabs
-        // Verify item: "Browsing history and site data"
-        // Verify item" <address count> addresses
-        // Verify item:  "Collections
-        // Verify item" <collection count> collections
-        // Verify item button: "Delete browsing data"
-
-        // Verify item: "Data collection"
-        // Click on: "Data collection"
-        // Verify sub-menu items...
-        // Verify header: "Usage and technical data"
-        // Verify description: "Shares performance, usage, hardware and customization data about your browser with Mozilla to help us make Firefox Preview better"
-        // Verify item:  toggle default value: 'on'
-
-        // Verify item: "Privacy notice"
-        // Verify item: "Leak Canary" and default toggle value: "Off"
-
         homeScreen {
         }.openThreeDotMenu {
         }.openSettings {
 
             // PRIVACY
             verifyPrivacyHeading()
-            verifyEnhancedTrackingProtectionButton()
             verifyEnhancedTrackingProtectionValue()
-            // drill down to submenu
+        }.openSubMenuEnhancedTP {
+            verifyBrowseHeader()
+            verifyBrowseText()
+            verifyLearnMoreLink()
+//                verifyEnhancedTrackingProtectionToggle()
+            verifyStandardToggle()
+            verifyStandardDescription()
+            verifyStrictToggle()
+            verifyStrictDescription()
+            verifyExceptions()
+        }.openExceptions {
+            verifyExceptionsDescription()
+            verifyLearnMoreLink()
+        }.goBack {
+        }.goBack {
             verifyAddPrivateBrowsingShortcutButton()
-            verifySitePermissionsButton()
-            // drill down on search
+        }.openSubMenuSitePermissions {
+            verifyAutoplay()
+            verifyAutoplayStatus()
+            verifyCamera()
+//                verifyCameraStatus()
+            verifyLocation()
+//                verifyLocationStatus()
+            verifyMicrophone()
+//                verifyMicrophoneStatus()
+            verifyNotification()
+//                verifyNotificationStatus()
+        }.openSubMenuExceptions {
+            verifyNoSiteExceptions()
+        }.goBack {
+        }.goBack {
+        }.openSubMenuDeleteBrowsingData {
+            verifyOpenTabs()
+            verifyOpenTabsCount()
+            verifyBrowsingHistory()
+            verifyBrowsingHistoryCount()
+            verifyCollections()
+            verifyCollectionsCount()
+            verifyCookies()
+            verifyCookiesDescription()
+            verifyCached()
+            verifyCachedDescription()
+            verifySitePermissions()
             verifyDeleteBrowsingDataButton()
-            verifyDeleteBrowsingDataOnQuitButton()
-            verifyDataCollectionButton()
+        }.goBack {
+        }.openSubMenuDeleteBrowsingDataOnQuit {
+            // ERROR matches 2
+//                verifyDeleteBrowsingDataOnQuitHeader()
+            verifyDeleteBrowsingDataOnQuitDescription()
+            enableDeleteBrowsingDataOnQuit()
+            verifyOpenTabsLabel()
+            verifyBrowsingHistoryLabel()
+            verifyCookiesLabel()
+            verifyCookiesLabelDescription()
+            verifyCachedImagesAndFiles()
+            verifyCachedImagesAndFilesDescription()
+            verifySitePermissionsLabel()
+        }.goBack {
+        }.openDataCollection {
+            verifyUsageAndTechDataLabel()
+            verifyUsageAndTechDataDescription()
+            verifyExperimentsLabel()
+            verifyExperimentsDescription()
+        }.goBack {
             verifyPrivacyNoticeButton()
             verifyLeakCanaryButton()
         }

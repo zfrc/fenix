@@ -17,7 +17,7 @@ import org.mozilla.fenix.helpers.HomeActivityTestRule
 import org.mozilla.fenix.ui.robots.homeScreen
 
 /**
- *  Tests for verifying the main three dot menu options
+ *  Tests for verifying the Settings menu - Basics sub menu
  *
  */
 

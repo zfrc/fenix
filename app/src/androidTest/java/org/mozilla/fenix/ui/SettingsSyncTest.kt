@@ -16,7 +16,7 @@ import org.mozilla.fenix.helpers.AndroidAssetDispatcher
 import org.mozilla.fenix.helpers.HomeActivityTestRule
 
 /**
- *  Tests for verifying the main three dot menu options
+ *  Tests for verifying the Settings menu - Sync sub menu
  *
  */
 
