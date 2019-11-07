@@ -69,6 +69,10 @@ if [[ "${device_type}" =~ ^(arm64-v8a|armeabi-v7a|x86_64|x86)$ ]]; then
     APK_APP="${PATH_APK}/app-geckoNightly-${device_type}-debug.apk"
     flank_template="${PATH_TEST}/flank-${device_type}.yml"
     echo "device_type: ${device_type}"
+elif [[ "${device_type}" == *"start-test"* ]]; then
+    APK_APP="${PATH_APK}/app-geckoNightly-x86-debug.apk"
+    flank_template="${PATH_TEST}/flank-x86-start-test.yml"
+    echo "device_type: ${device_type}"
 else
     echo "NOT FOUND"
     exitcode=1
