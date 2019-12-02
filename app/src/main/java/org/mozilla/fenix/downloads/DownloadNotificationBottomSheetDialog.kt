@@ -35,7 +35,8 @@ class DownloadNotificationBottomSheetDialog(
             download_notification_title.text =
                 context.getString(R.string.mozac_feature_downloads_failed_notification_text2)
 
-            download_notification_icon.setImageDrawable(context.getDrawable(
+            download_notification_icon.setImageDrawable(
+                context.getDrawable(
                 mozilla.components.feature.downloads.R.drawable.mozac_feature_download_ic_download_failed
             ))
 
